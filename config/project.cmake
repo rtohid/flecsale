@@ -184,6 +184,9 @@ if(ENABLE_CALIPER)
   include_directories(${Caliper_INCLUDE_DIRS})
   add_definitions(-DHAVE_CALIPER)
   list( APPEND FleCSALE_LIBRARIES ${Caliper_LIBRARIES} )
+  if(FLECSI_RUNTIME_MODEL STREQUAL "mpi")
+    list( APPEND FleCSALE_LIBRARIES ${Caliper_MPI_LIBRARIES} )
+  endif()
 endif()
 
 #------------------------------------------------------------------------------#

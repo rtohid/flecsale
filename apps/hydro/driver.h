@@ -119,7 +119,7 @@ int driver(int argc, char** argv)
     CALI_CXX_MARK_FUNCTION;
   
     // [Caliper] getting the context begin
-    CALI_MARK_BEGIN("getting the context");
+    CALI_MARK_BEGIN("getting-the-context");
   #endif
 
   // get the context
@@ -128,7 +128,7 @@ int driver(int argc, char** argv)
 
   #ifdef HAVE_CALIPER
     // [Caliper] getting the context end
-    CALI_MARK_END("getting the context");
+    CALI_MARK_END("getting-the-context");
   #endif
 
   //===========================================================================
@@ -137,7 +137,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] parsing arguments begin
-    CALI_MARK_BEGIN("parsing arguments");
+    CALI_MARK_BEGIN("parsing-arguments");
   #endif
 
   auto args = process_arguments( argc, argv );
@@ -155,7 +155,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] parsing arguments end
-    CALI_MARK_END("parsing arguments");
+    CALI_MARK_END("parsing-arguments");
   #endif
 
   //===========================================================================
@@ -164,7 +164,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] getting the mesh begin
-    CALI_MARK_BEGIN("getting the mesh");
+    CALI_MARK_BEGIN("getting-the-mesh");
   #endif
 
   // get the client handle 
@@ -174,7 +174,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] getting the mesh end
-    CALI_MARK_END("getting the mesh");
+    CALI_MARK_END("getting-the-mesh");
   #endif
 
   //===========================================================================
@@ -205,7 +205,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] getting parameter handles begin
-    CALI_MARK_BEGIN("getting parameter handles");
+    CALI_MARK_BEGIN("getting-parameter-handles");
   #endif
 
   auto d  = flecsi_get_handle(mesh, hydro,  density,   real_t, dense, 0);
@@ -223,7 +223,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] getting parameter handles end
-    CALI_MARK_END("getting parameter handles");
+    CALI_MARK_END("getting-parameter-handles");
   #endif
 
   //===========================================================================
@@ -232,7 +232,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] initial conditions begin
-    CALI_MARK_BEGIN("initial conditions");
+    CALI_MARK_BEGIN("initial-conditions");
   #endif
 
   // the solution time starts at zero
@@ -259,7 +259,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] initial conditions end
-    CALI_MARK_END("initial conditions");
+    CALI_MARK_END("initial-conditions");
   #endif
 
   //===========================================================================
@@ -300,7 +300,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] residual eval begin
-    CALI_MARK_BEGIN("residual eval");
+    CALI_MARK_BEGIN("residual-eval");
   #endif
 
   auto & min_reduction = 
@@ -308,7 +308,7 @@ int driver(int argc, char** argv)
   
   #ifdef HAVE_CALIPER
     // [Caliper] marking the loop begin
-    CALI_CXX_MARK_LOOP_BEGIN(mainLoop, "main loop");
+    CALI_CXX_MARK_LOOP_BEGIN(mainLoop, "main-loop");
   #endif
 
   for ( 
@@ -442,7 +442,7 @@ int driver(int argc, char** argv)
     CALI_CXX_MARK_LOOP_END(mainLoop);
 
     // [Caliper] residual eval end
-    CALI_MARK_END("residual eval");
+    CALI_MARK_END("residual-eval");
   #endif
 
   //===========================================================================
