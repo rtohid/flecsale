@@ -17,7 +17,7 @@ ARG TRAVIS_TAG
 ARG TRAVIS_REPO_SLUG
 ARG TRAVIS_COMMIT
 
-RUN apt install -y libboost-program-options-dev
+RUN apt-get -qq install -y libboost-program-options-dev
 
 COPY flecsale /home/flecsi/flecsale
 USER root
