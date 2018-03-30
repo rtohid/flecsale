@@ -19,6 +19,7 @@ ARG TRAVIS_COMMIT
 
 COPY flecsale /home/flecsi/flecsale
 USER root
+RUN ldconfig
 RUN chown -R flecsi:flecsi /home/flecsi/flecsale
 USER flecsi
 
