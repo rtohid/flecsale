@@ -9,9 +9,13 @@
 
 #pragma once
 
+#include <flecsale-config.h>
+
+#include <ristra/assertions/errors.h>
+
 // user includes
-#ifdef HAVE_EXODUS
-#  include <flecsi/io/exodus_definition.h>
+#ifdef FLECSALE_ENABLE_EXODUS
+#  include <flecsi-sp/io/exodus_definition.h>
 #endif
 
 // Paraview has a problem with regions in nfaced data.  Uncomment the next
@@ -54,11 +58,11 @@ public:
   using  ex_index_t = int;
 
 
+#ifdef FLECSALE_ENABLE_EXODUS
+
   //! use flecsi's base functionality
   using base_t =
-    flecsi::io::exodus_base__< MESH_TYPE::num_dimensions, real_t >;
-
-#ifdef HAVE_EXODUS
+    flecsi_sp::io::exodus_base__< MESH_TYPE::num_dimensions, real_t >;
 
   //============================================================================
   //! \brief write field data to the file
@@ -102,16 +106,18 @@ public:
     // put the number of element fields
     status = ex_put_var_param(exoid, "e", num_var);
     if (status)
-      raise_runtime_error(
+      throw_runtime_error(
         "Problem writing variable number, " <<
         " ex_put_var_param() returned " << status 
       );
 
     // fill element variable names array
-    auto label = validate_string( f.label() );
+    //doesnt work
+    //auto label = validate_string( f.label() );
+    auto label = std::string( "output_variable" );
     status = ex_put_var_name(exoid, "e", var_id, "density");
     if (status)
-      raise_runtime_error(
+      throw_runtime_error(
         "Problem writing variable name, " <<
         " ex_put_var_name() returned " << status 
       );
@@ -123,7 +129,7 @@ public:
       exoid, time_step, var_id, elem_blk_id, tmp.size(), tmp.data()
     );
     if (status)
-      raise_runtime_error(
+      throw_runtime_error(
         "Problem writing variable data, " <<
         " ex_put_elem_var() returned " << status 
       );
@@ -350,7 +356,7 @@ public:
     T * const d = nullptr
   ) {
 
-#ifdef HAVE_EXODUS
+#ifdef FLECSALE_ENABLE_EXODUS
 
     std::cout << "Writing mesh to: " << name << std::endl;
 
