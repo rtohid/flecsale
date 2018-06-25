@@ -231,10 +231,12 @@ int driver(int argc, char** argv)
     // compute the fluxes
     flecsi_execute_task( evaluate_fluxes, apps::hydro, single, mesh,
         d, v, e, p, T, a, F );
- 
+
     // now we need it
-    auto time_step =
+    auto time_step_future=
       flecsi::execution::context_t::instance().reduce_min(local_future_time_step);
+
+    auto time_step = time_step_future.get();
 
     // Loop over each cell, scattering the fluxes to the cell
     flecsi_execute_task( 

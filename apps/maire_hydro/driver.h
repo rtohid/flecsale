@@ -378,7 +378,7 @@ int driver(int argc, char** argv)
     
     // now we need it
     time_step =
-      flecsi::execution::context_t::instance().reduce_min(local_time_step_future);
+      (flecsi::execution::context_t::instance().reduce_min(local_time_step_future)).get();
     time_step = std::min( time_step, inputs_t::final_time - soln_time );       
 
 		if ( rank == 0 ) {
