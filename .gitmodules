@@ -3,10 +3,10 @@
 	url = ../../laristra/cinch.git
 [submodule "flecsi"]
 	path = flecsi
-	url = ../../laristra/flecsi.git
+	url = git@github.com:rtohid/flecsi.git
 [submodule "ristra"]
 	path = ristra
-	url = ../../laristra/libristra.git
+	url = git@github.com:rtohid/libristra.git
 [submodule "specializations"]
 	path = specializations
-	url = ../../laristra/flecsi-sp.git
+	url = git@github.com:rtohid/flecsi-sp.git
